@@ -1,0 +1,45 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import SideBar from "@/components/SideBar.vue";
+import Banner from "@/components/test components/Banner.vue";
+import LogIn from "@/components/LogIn.vue";
+import {BACK_END} from "../config.js";
+import {getCookie} from "../controllers/cookie.js";
+
+const isAuthenticated = ref(false);
+
+// Функция для проверки статуса аутентификации
+async function checkAuthStatus() {
+  try {
+    const jwtToken = getCookie('jwt')
+    const response = await axios.get(`${BACK_END}/jwt/check`, {
+      headers: {
+        'Authorization': `${jwtToken}`
+      }
+    });
+    console.log(response)
+    isAuthenticated.value = response.data.isAuthenticated; //  { isAuthenticated: true/false }
+  } catch (error) {
+    console.error('Ошибка при проверке аутентификации:', error);
+  }
+}
+
+onMounted(checkAuthStatus);
+</script>
+
+<template>
+
+    <SideBar v-if="isAuthenticated" />
+    <Banner v-if="isAuthenticated"/>
+    <LogIn v-else />
+
+
+
+
+
+</template>
+
+<style scoped>
+
+</style>
