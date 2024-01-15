@@ -1,20 +1,21 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios'; // Убедитесь, что axios установлен
+import axios from 'axios';
 import {getCookie} from "../../../../controllers/cookie.js";
 import LogOutButton from "@/components/elements/buttons/LogOutButton.vue";
+import {BACK_END} from "../../../../config.js";
 const userData = ref(null);
 
 async function fetchUserData() {
   try {
     const jwt = getCookie('jwt');
-    const response = await axios.get('http://localhost:3000/users/user', {
+    const response = await axios.get(`${BACK_END}/users/user`, {
       headers: {
         'Authorization': `${jwt}`
       }
     });
     userData.value = response.data;
-    console.log(userData);
+
   } catch (error) {
     console.error('Error while getting userData', error);
   }
@@ -29,7 +30,7 @@ onMounted(fetchUserData);
     <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
       <img
           :alt="userData.name"
-          src="https://files.oaiusercontent.com/file-SIIL8eRU33IZCzHwSnOl62m0?se=2024-01-07T17%3A05%3A07Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Dd79b6a84-600e-41d3-a517-7088afa9a41c.webp&sig=Y1ebq/uWPMCAFYJ3rbBVhl%2Bp3auYtAFf9H0qVA6cnCI%3D"
+          src="https://cdn.discordapp.com/attachments/1049814335762993154/1196086088410873916/DALLE_2024-01-14_15.38.18_-_An_abstract_visually_appealing_design_suitable_for_a_profile_picture._The_image_should_be_vibrant_and_colorful_with_a_combination_of_geometric_shape.png?ex=65b658f9&is=65a3e3f9&hm=348f16c4050ca9a2e416dd2c1b60ba3320e866f2affb5787d8b4e947105f19d5&"
           class="h-10 w-10 rounded-full object-cover"
       />
 

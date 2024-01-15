@@ -18,7 +18,7 @@ async function checkAuthStatus() {
         'Authorization': `${jwtToken}`
       }
     });
-    console.log(response)
+
     isAuthenticated.value = response.data.isAuthenticated; //  { isAuthenticated: true/false }
   } catch (error) {
     console.error('Ошибка при проверке аутентификации:', error);
@@ -31,7 +31,7 @@ onMounted(checkAuthStatus);
 <template>
 
     <SideBar v-if="isAuthenticated" />
-    <Banner v-if="isAuthenticated"/>
+    <RouterView v-if="isAuthenticated" />
     <LogIn v-else />
 
 

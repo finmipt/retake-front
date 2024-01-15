@@ -3,8 +3,11 @@ import MenuItemMain from "@/components/elements/SideBarElements/MenuItemMain.vue
 import MenuDrop from "@/components/elements/SideBarElements/MenuDrop.vue";
 import MenuUserInfo from "@/components/elements/SideBarElements/MenuUserInfo.vue";
 
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import LogOutButton from "@/components/elements/buttons/LogOutButton.vue";
+import axios from "axios";
+import {getCookie} from "../../controllers/cookie.js";
+import {BACK_END} from "../../config.js";
 const menuItems = ref([
   { text: 'Item 1', href: '/path1' },
   { text: 'Item 2', href: '/path2' },
@@ -14,6 +17,21 @@ const menuItems = ref([
   { text: 'Item 2', href: '/path2' },
 
 ]);
+
+async function fetchMenuItems() {
+  try {
+    const jwt = getCookie('jwt');
+    const response = await axios.get(`${BACK_END}/users/menu-items`, {
+      headers: {
+        'Authorization': `${jwt}`
+      }
+    });
+    menuItems.value = response.data;
+  } catch (error) {
+    console.error('Error fetching menu items:', error);
+  }
+}
+onMounted(fetchMenuItems)
 </script>
 
 <template>
