@@ -7,6 +7,7 @@ import Banner from "@/components/test components/Banner.vue";
 import isAdminMiddleware from "../../middlewares/userMiddlewares.js";
 import Admin from "@/components/Admin.vue";
 import CreateEvent from "@/components/admin/CreateEvent.vue";
+import CreateOne from "@/components/admin/CreateOne.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -26,12 +27,12 @@ const router = createRouter({
                 {
                     path: '',
                     name: 'StartAdmin',
-                    component: StartAdmin
+                    component: StartAdmin,
                 },
                 {
                     path: 'create-event',
                     name: 'CreateEvent',
-                    component: CreateEvent,
+                    component: CreateOne,
                 },
             ]
         },

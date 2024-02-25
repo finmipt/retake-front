@@ -1,31 +1,93 @@
-<script setup lang="ts">
+<script setup >
 
+
+import DatePicker from "@/components/admin/CreateEvent/DatePicker.vue";
 </script>
 
 <template>
-<div class="grid-cols-10 caption-bottom">
-  <h1>This is a page for creating Events</h1>
-  <p >Admin page</p>
-  <div date-rangepicker class="flex items-center">
-    <div class="relative">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-        </svg>
+  <div class="flex flex-col">
+         <div class=" flex items-center flex-row h-28 rounded-lg bg-gray-50 shadow-lg mx-7 mt-5 mb-3">
+           <div class="basis-4/5 ml-7">
+             <p class="text-lg font-bold text-gray-800"> 1. Palun vali järelevastamise kuupäev </p>
+           </div>
+
+           <div class="basis-1/5 ">
+             <DatePicker />
+           </div>
+         </div>
+
+         <div class="flex items-center flex-row h-28 rounded-lg bg-gray-50 shadow-lg mx-7 my-3">
+           <div class="basis-2/5 ml-7">
+             <p class="text-lg font-bold text-gray-800"> 2. Palun vali järelevastamise kohad </p>
+           </div>
+
+           <div class="flex flex-col mr-5">
+             <p class="text-lg font-bold text-gray-800"> Jõhvi </p>
+             <label
+                 for="Johvi"
+                 class="relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
+             >
+               <input type="checkbox" id="Johvi" class="peer sr-only" />
+
+               <span
+                   class="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"
+               ></span>
+
+               <span
+                   class="absolute inset-y-0 start-0 m-1 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-6"
+               ></span>
+             </label>
+           </div>
+           <div class="flex flex-col mr-5">
+             <p class="text-lg font-bold text-gray-800"> Narva </p>
+             <label
+                 for="Narva"
+                 class="relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
+             >
+               <input type="checkbox" id="Narva" class="peer sr-only" />
+
+               <span
+                   class="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"
+               ></span>
+
+               <span
+                   class="absolute inset-y-0 start-0 m-1 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-6"
+               ></span>
+             </label>
+           </div>
+           <div class="flex flex-col mr-5">
+             <p class="text-lg font-bold text-gray-800"> Sillamäe</p>
+             <label
+                 for="Sillamäe"
+                 class="relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
+             >
+               <input type="checkbox" id="Sillamäe" class="peer sr-only" />
+
+               <span
+                   class="absolute inset-0 rounded-full bg-green-500 transition peer-checked:bg-gray-700"
+               ></span>
+
+               <span
+                   class="absolute inset-y-0 start-6 m-1 h-6 w-6 rounded-full bg-white transition-all peer-checked:start-0"
+               ></span>
+             </label>
+           </div>
+         </div>
+
+         <div class="flex items-center flex-row h-28 rounded-lg bg-gray-50 shadow-lg mx-7 my-3">
+      <div class="basis-2/5 ml-7">
+        <p class="text-lg font-bold text-gray-800"> 2. Palun vali järelevastamise kohad </p>
       </div>
-      <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
-    </div>
-    <span class="mx-4 text-gray-500">to</span>
-    <div class="relative">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-        </svg>
+
+      <div class="basis-3/5 mr-5">
+        <input type="text"
+               name="place"
+               id="place"
+               autocomplete="address-level1"
+               class="block  w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
       </div>
-      <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>

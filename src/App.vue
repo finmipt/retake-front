@@ -29,12 +29,15 @@ onMounted(checkAuthStatus);
 </script>
 
 <template>
+  <div class="flex flex-auto">
 
     <SideBar v-if="isAuthenticated" />
-    <RouterView v-if="isAuthenticated" />
+    <div class="flex w-4/5 " v-if="isAuthenticated">
+        <RouterView class=""/>
+    </div>
     <LogIn v-else />
 
-
+  </div>
 
 
 

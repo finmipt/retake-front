@@ -38,7 +38,7 @@ onMounted(fetchMenuItems)
   <div class="flex w-1/5 h-screen flex-col justify-between border-e bg-white">
     <div class="px-4 py-6">
     <span class="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
-      <img src="https://kutsehariduskeskus.ee/sites/kutsehariduskeskus.ee/files/styles/hitsa_core_logo/public/ivkhk_logo_uus.png?itok=QR_MroaG" alt="IDKHK"/>
+      <img src="https://cdn.discordapp.com/attachments/850371030635118595/1201587851167547492/download.jpeg?ex=65ca5ce4&is=65b7e7e4&hm=925deae97a10ac003d694cc1978d09d44216eafdc947dc92f584244fc0f85c5f&" alt="IDKHK"/>
     </span>
 
       <ul class="mt-6 space-y-1">
