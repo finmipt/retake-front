@@ -2,6 +2,9 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import {BACK_END} from "../../../config.js";
+import router from "@/router/router.js";
+import Admin from "@/components/Admin.vue";
+import AlertEventCreated from "@/components/admin/AlertEventCreated.vue";
 
 const eventData = ref({
   title: '',
@@ -9,23 +12,23 @@ const eventData = ref({
   locations: {
     Narva: {
       name: 'Narva',
-      rooms: 'fgd',
+      rooms: 'N-201 ja N-202',
       isSelected: true
     },
     Johvi: {
       name: 'Jõhvi',
-      rooms: 'dfg',
+      rooms: 'C204 ja C205',
       isSelected: true
     },
     Sillamae: {
       name: 'Sillamäe',
-      rooms: 'dfgdf',
+      rooms: 'S2',
       isSelected: true
     }
   },
   description: '',
-  registrationOpens: null,
-  registrationCloses: null,
+  registrationOpens: 13,
+  registrationCloses: 3,
   responsivePerson: '',
   createdBy: 'notTracked',
   createdOn: ''
@@ -50,7 +53,8 @@ const submitEvent = async () => {
   try {
     const response = await axios.post(`${BACK_END}/event/create`, eventData.value);
     console.log("Event created successfully:", response.data);
-    // Обработка успешного создания события, например, показ уведомления или перенаправление
+    // After successful event creation, redirect to the event list page
+    await router.push({name: 'ManageEvents', props: {eventCreated: true, eventData: response.data}});
   } catch (error) {
     console.error("Event creation failed:", error);
     // Обработка ошибки создания события
@@ -61,6 +65,7 @@ const submitEvent = async () => {
 </script>
 
 <template>
+
   <div class="container mx-auto p-4">
     <form @submit.prevent="submitEvent" class="space-y-4">
       <div>

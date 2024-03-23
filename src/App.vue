@@ -31,7 +31,7 @@ onMounted(checkAuthStatus);
 <template>
   <div class="flex flex-auto">
 
-    <SideBar v-if="isAuthenticated" />
+    <SideBar v-if="isAuthenticated" class="hidden md:block"/>
     <div class="flex w-4/5 " v-if="isAuthenticated">
         <RouterView class=""/>
     </div>

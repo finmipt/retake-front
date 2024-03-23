@@ -8,6 +8,16 @@ import isAdminMiddleware from "../../middlewares/userMiddlewares.js";
 import Admin from "@/components/Admin.vue";
 import CreateEvent from "@/components/admin/CreateEvent.vue";
 import CreateOne from "@/components/admin/CreateOne.vue";
+import ManageEvents from "@/components/admin/ManageEvents.vue";
+import Student from "@/components/Student.vue";
+import Register from "@/components/student/Register.vue";
+import ChooseEvent from "@/components/student/register/ChooseEvent.vue";
+import RegisterForEvent from "@/components/student/register/RegisterForEvent.vue";
+import Profile from "@/components/student/Profile.vue";
+import Duty from "@/components/Duty.vue";
+import Journal from "@/components/duty/Journal.vue";
+import ChooseCurrentEvent from "@/components/duty/ChooseCurrentEvent.vue";
+import ScanerId from "@/components/duty/journal/ScanerId.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -34,13 +44,73 @@ const router = createRouter({
                     name: 'CreateEvent',
                     component: CreateOne,
                 },
+                {
+                    path: 'manage-events',
+                    name: 'ManageEvents',
+                    component: ManageEvents,
+                }
             ]
         },
         // student routes
         {
             path: '/student',
             name: 'StartStudent',
-            component: StartStudent
+            component: Student,
+            children: [
+                {
+                    path: '',
+                    name: 'StartStudent',
+                    component: StartStudent,
+                },
+                {
+                  path: 'profile',
+                    name: 'Profile',
+                    component: Profile,
+                },
+                {
+                    path: 'register',
+                    name: 'Register',
+                    component: Register,
+                    children: [
+                        {
+                            path: '',
+                            name: 'ChooseEvent',
+                            component: ChooseEvent,
+                        },
+                        {
+                            path: ':id',
+                            name: 'RegisterForEvent',
+                            component: RegisterForEvent,
+                        }
+                    ]
+                },
+            ]
+        },
+        // routes for duties
+        {
+          path: '/duty',
+            name: 'Duty',
+            component: Duty,
+            beforeEnter: isAdminMiddleware,
+            children: [
+                {
+                    path: '',
+                    name: 'ChooseCurrentEvent',
+                    component: ChooseCurrentEvent,
+                },
+                {
+                    path: ':eventId/:location',
+                    name: 'Journal',
+                    component: Journal,
+                    children: [
+                        {
+                            path: '/scan',
+                            name: 'Scan',
+                            component: ScanerId,
+                        }
+                    ]
+                }
+            ]
         }
     ]
 });
