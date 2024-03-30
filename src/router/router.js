@@ -1,10 +1,10 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import axios from "axios";
-import {getCookie} from "../../controllers/cookie.js";
+import {getCookie} from "../controllers/cookie.js";
 import StartAdmin from "@/components/admin/StartAdmin.vue";
 import StartStudent from "@/components/student/StartStudent.vue";
 import Banner from "@/components/test components/Banner.vue";
-import isAdminMiddleware from "../../middlewares/userMiddlewares.js";
+import isAdminMiddleware from "../middlewares/userMiddlewares.js";
 import Admin from "@/components/Admin.vue";
 import CreateEvent from "@/components/admin/CreateEvent.vue";
 import CreateOne from "@/components/admin/CreateOne.vue";

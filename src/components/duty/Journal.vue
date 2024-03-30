@@ -3,7 +3,7 @@ import { useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {BACK_END} from "../../../config.js";
-import {getCookie} from "../../../controllers/cookie.js";
+import {getCookie} from "../../controllers/cookie.js";
 import router from "@/router/router.js";
 import JournalLine from "@/components/duty/journal/JournalLine.vue";
 import ScanerId from "@/components/duty/journal/ScanerId.vue";
@@ -44,7 +44,7 @@ onMounted(() => {
 <template>
   <div class="overflow-x-auto rounded-lg border border-gray-200 m-4">
     <div class="modal">
-      <ScanerId v-model="isScannerIdOpen" @update=""/>
+      <ScanerId v-model="isScannerIdOpen" @update="" :eventId="eventId"/>
     </div>
     <div v-if="!isScannerIdOpen">
       <h1 class="text-3xl text-center">Journal {{location}}</h1>

@@ -5,7 +5,8 @@ import SideBar from "@/components/SideBar.vue";
 import Banner from "@/components/test components/Banner.vue";
 import LogIn from "@/components/LogIn.vue";
 import {BACK_END} from "../config.js";
-import {getCookie} from "../controllers/cookie.js";
+import {getCookie} from "./controllers/cookie.js";
+import MDHeader from "@/components/MDHeader.vue";
 
 const isAuthenticated = ref(false);
 
@@ -29,10 +30,10 @@ onMounted(checkAuthStatus);
 </script>
 
 <template>
+  <MDHeader v-if="isAuthenticated" class="block md:hidden sticky top-0 mx-auto "/>
   <div class="flex flex-auto">
-
     <SideBar v-if="isAuthenticated" class="hidden md:block"/>
-    <div class="flex w-4/5 " v-if="isAuthenticated">
+    <div class="flex md:w-4/5 " v-if="isAuthenticated">
         <RouterView class=""/>
     </div>
     <LogIn v-else />

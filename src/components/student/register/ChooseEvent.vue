@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div v-if="events">
+<div v-if="events" class="flex-auto w-full">
   <EventCard v-for="event in events" :key="event.id" :event='event' />
 </div>
 </template>

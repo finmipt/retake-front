@@ -2,7 +2,7 @@
 import { defineProps, ref, onMounted } from 'vue';
 import { BACK_END } from '../../../../config.js';
 import axios from 'axios';
-import {getCookie} from "../../../../controllers/cookie.js";
+import {getCookie} from "../../../controllers/cookie.js";
 
 const props = defineProps({
   registration: Object,

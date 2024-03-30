@@ -3,7 +3,7 @@ import { useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {BACK_END} from "../../../../config.js";
-import {getCookie} from "../../../../controllers/cookie.js";
+import {getCookie} from "../../../controllers/cookie.js";
 import router from "@/router/router.js";
 
 const route = useRoute();

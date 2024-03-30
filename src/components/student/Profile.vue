@@ -4,7 +4,7 @@ import RegCard from "@/components/student/profile/RegCard.vue";
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import {BACK_END} from "../../../config.js";
-import {getCookie} from "../../../controllers/cookie.js";
+import {getCookie} from "../../controllers/cookie.js";
 import QrcodeVue  from "qrcode.vue";
 import StudentCard from "@/components/student/profile/StudentCard.vue";
 

@@ -4,9 +4,14 @@ import { defineProps, defineEmits, ref, onMounted } from 'vue';
 import {QrcodeStream} from 'vue-qrcode-reader';
 import axios from "axios";
 import {BACK_END} from "../../../../config.js";
-import {getCookie} from "../../../../controllers/cookie.js";
+import {getCookie} from "../../../controllers/cookie.js";
 
-const emit = defineEmits(['update']);
+const props = defineProps({
+  eventId: {
+    type: String,
+    required: true
+  }
+})
 
 // Определение props
 
@@ -29,7 +34,7 @@ async function onDetect(result) {
     console.log('QR code detected:', result);
     const userId = result[0].rawValue;
     isDetected.value = true;
-    const registrationResponse = await axios.get(`${BACK_END}/registration/get/${userId}`);
+    const registrationResponse = await axios.get(`${BACK_END}/registration/get_by_user_and_event/${userId}/${props.eventId}`);
     registrations.value = registrationResponse.data;
     const userResponse = await axios.get(`${BACK_END}/users/user_by_id/${userId}`);
     user.value = userResponse.data;
@@ -69,7 +74,7 @@ async function cancel() {
 
 <template>
   <div v-if="isOpen" class="inset-0 bg-black bg-opacity-50 flex  items-center sticky justify-start">
-    <div class="bg-white rounded-lg m-4 p-6 space-y-4 max-w-md">
+    <div class="bg-white rounded-lg m-4 p-1 md:p-6 space-y-4 max-w-md">
       <div v-if="isDetected && !isUpdated">
         <h1 class="text-2xl font-bold mb-4 mx-4">{{user.name}}</h1>
         <h1 class="text-2xl font-thin mb-4 mx-4" v-for="registration in registrations">{{registration.subject}} <b>{{registration.work_title}}</b></h1>

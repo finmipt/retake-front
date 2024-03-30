@@ -6,7 +6,7 @@ import MenuUserInfo from "@/components/elements/SideBarElements/MenuUserInfo.vue
 import {onMounted, ref} from "vue";
 import LogOutButton from "@/components/elements/buttons/LogOutButton.vue";
 import axios from "axios";
-import {getCookie} from "../../controllers/cookie.js";
+import {getCookie} from "../controllers/cookie.js";
 import {BACK_END} from "../../config.js";
 const menuItems = ref([
   { text: 'Item 1', href: '/path1' },
@@ -17,6 +17,7 @@ const menuItems = ref([
   { text: 'Item 2', href: '/path2' },
 
 ]);
+
 
 async function fetchMenuItems() {
   try {
@@ -37,8 +38,8 @@ onMounted(fetchMenuItems)
 <template>
   <div class="flex w-1/5 h-screen flex-col justify-between border-e bg-white">
     <div class="px-4 py-6">
-    <span class="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
-      <img src="https://cdn.discordapp.com/attachments/850371030635118595/1201587851167547492/download.jpeg?ex=65ca5ce4&is=65b7e7e4&hm=925deae97a10ac003d694cc1978d09d44216eafdc947dc92f584244fc0f85c5f&" alt="IDKHK"/>
+    <span class="grid h-16 w-32 place-content-center rounded-2xl bg-black text-xs text-gray-600">
+      <img src="https://kutsehariduskeskus.ee/wp-content/uploads/2023/11/iv_logo_bold.png"  class="object-scale-down" alt="IDKHK"/>
     </span>
 
       <ul class="mt-6 space-y-1">
