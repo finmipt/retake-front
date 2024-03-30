@@ -27,19 +27,15 @@ jobs:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup ssh-agent
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
-          ssh-passphrase: ${{ secrets.KEY_PASSPHRASE }}
-
       - name: Deploy to Server
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
             docker pull finmipt/retake-front:latest
             docker stop retake-front || true
             docker rm retake-front || true
             docker run -d --name retake-front -p 8080:80 finmipt/retake-front:latest
-          EOF
+          
