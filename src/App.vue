@@ -14,6 +14,7 @@ const isLoaded = ref(false);
 // Функция для проверки статуса аутентификации
 async function checkAuthStatus() {
   try {
+    isLoaded.value = false;
     const jwtToken = getCookie('jwt')
     const response = await axios.get(`${BACK_END}/jwt/check`, {
       headers: {
