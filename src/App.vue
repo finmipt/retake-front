@@ -25,6 +25,7 @@ async function checkAuthStatus() {
     isLoaded.value = true;
   } catch (error) {
     console.error('Ошибка при проверке аутентификации:', error);
+    isLoaded.value = true;
   }
 }
 

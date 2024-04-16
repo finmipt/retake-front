@@ -37,6 +37,10 @@ onMounted(fetchMenuItems)
 
 <template>
   <div class="flex w-1/5 h-screen flex-col justify-between border-e bg-white">
+    <h1 class="text-2xl text-black font-extrabold ">
+      Järelevastamise
+      <strong class="font-extrabold text-red-700 sm:block"> Portal </strong>
+    </h1>
     <div class="px-4 py-6">
     <span class="grid h-16 w-32 place-content-center rounded-2xl bg-black text-xs text-gray-600">
       <img src="https://kutsehariduskeskus.ee/wp-content/uploads/2023/11/iv_logo_bold.png"  class="object-scale-down" alt="IDKHK"/>
@@ -50,7 +54,6 @@ onMounted(fetchMenuItems)
             :href="item.href"
         />
 
-        <MenuDrop/>
 
 
       </ul>
