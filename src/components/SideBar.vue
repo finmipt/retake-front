@@ -9,12 +9,6 @@ import axios from "axios";
 import {getCookie} from "../controllers/cookie.js";
 import {BACK_END} from "../../config.js";
 const menuItems = ref([
-  { text: 'Item 1', href: '/path1' },
-  { text: 'Item 2', href: '/path2' },
-  { text: 'Item 2', href: '/path2' },
-  { text: 'Item 2', href: '/path2' },
-  { text: 'Item 2', href: '/path2' },
-  { text: 'Item 2', href: '/path2' },
 
 ]);
 

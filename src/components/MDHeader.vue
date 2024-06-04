@@ -3,6 +3,7 @@ import {onMounted, ref} from "vue";
 import {getCookie} from "@/controllers/cookie.js";
 import axios from "axios";
 import {BACK_END} from "../../config.js";
+import LogOutButton from "@/components/elements/buttons/LogOutButton.vue";
 
 const isMenuOpen = ref(false);
 
@@ -43,6 +44,7 @@ onMounted(fetchMenuItems)
    <div v-if="isMenuOpen" class="bg-white place-items-end">
      <div class="flex flex-col place-items-end">
        <a v-for="item in menuItems" :href="item.href" class="p-2 "> {{item.text}} </a>
+       <LogOutButton/>
      </div>
     </div>
 

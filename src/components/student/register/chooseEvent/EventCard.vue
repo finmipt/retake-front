@@ -26,10 +26,10 @@ defineProps({
     <div class="sm:flex sm:justify-between sm:gap-4">
       <div>
         <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          {{ event.title }}
+          {{ event.title }} sdsds
         </h3>
-        <span  class="whitespace-nowrap rounded-full bg-red-200 px-2.5 py-0.5 text-sm text-red-700">
-            Tühistatud
+        <span  class="whitespace-nowrap rounded-full bg-green-200 px-2.5 py-0.5 text-sm text-green-700">
+            Registreerimine on avatud
         </span>
         <div v-for="location in event.locations[0][0]" >
           <p class="mt-1 text-xs font-medium text-gray-600" v-if="location.isSelected" > {{location.name}}  {{location.rooms}} </p>
