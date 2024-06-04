@@ -41,7 +41,7 @@ const fetchRegistrationData = async () => {
 const fetchEvent = async () => {
   try {
     const jwt = getCookie('jwt');
-    const response = await axios.get(`${BACK_END}/event/${eventId.value}`, {
+    const response = await axios.get(`${BACK_END}/event/get/${eventId.value}`, {
       headers: {
         'Authorization': `${jwt}`
       }
