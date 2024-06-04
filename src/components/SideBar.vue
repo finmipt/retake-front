@@ -33,7 +33,7 @@ onMounted(fetchMenuItems)
   <div class="flex w-1/5 h-screen flex-col justify-between border-e bg-white">
     <h1 class="text-2xl text-black font-extrabold ">
       Järelevastamise
-      <strong class="font-extrabold text-red-700 sm:block"> Portal </strong>
+      <strong class="font-extrabold text-red-700 sm:block"> Portaal </strong>
     </h1>
     <div class="px-4 py-6">
     <span class="grid h-16 w-32 place-content-center rounded-2xl bg-black text-xs text-gray-600">

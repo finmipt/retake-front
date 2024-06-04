@@ -14,7 +14,7 @@ import MenuUserInfo from "@/components/elements/SideBarElements/MenuUserInfo.vue
       <div class="mx-auto max-w-xl text-center">
         <h1 class="text-3xl text-black font-extrabold sm:text-5xl">
           Järelevastamise
-          <strong class="font-extrabold text-red-700 sm:block"> Portal </strong>
+          <strong class="font-extrabold text-red-700 sm:block"> Portaal </strong>
         </h1>
 
         <p class="mt-4 text-black sm:text-xl/relaxed">
