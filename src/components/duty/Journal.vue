@@ -7,6 +7,7 @@ import {getCookie} from "../../controllers/cookie.js";
 import router from "@/router/router.js";
 import JournalLine from "@/components/duty/journal/JournalLine.vue";
 import ScanerId from "@/components/duty/journal/ScanerId.vue";
+import { format } from 'date-fns';
 
 const route = useRoute();
 const eventId = ref(route.params.eventId);
@@ -14,6 +15,7 @@ const location = ref(route.params.location);
 const registrations = ref([]);
 
 const isScannerIdOpen = ref(false);
+const event = ref({});
 
 const openScannerId = () => {
   isScannerIdOpen.value = true;
@@ -36,8 +38,23 @@ const fetchRegistrationData = async () => {
     console.error('Error while getting registration data', error);
   }
 };
+const fetchEvent = async () => {
+  try {
+    const jwt = getCookie('jwt');
+    const response = await axios.get(`${BACK_END}/event/get_event/${eventId.value}`, {
+      headers: {
+        'Authorization': `${jwt}`
+      }
+    });
+    event.value = response.data;
+  } catch (error) {
+    console.error('Error while getting event data', error);
+  }
+};
+
 onMounted(() => {
   fetchRegistrationData();
+  fetchEvent();
 });
 </script>
 
@@ -47,7 +64,7 @@ onMounted(() => {
       <ScanerId v-model="isScannerIdOpen" @update="" :eventId="eventId"/>
     </div>
     <div v-if="!isScannerIdOpen">
-      <h1 class="text-3xl text-center">Journal {{location}}</h1>
+      <h1 class="text-3xl text-center">Journal {{location}} {{format(event.date, 'PPPP', {locale: et})}}</h1>
       <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm" v-if="registrations">
       <thead class="ltr:text-left rtl:text-right">
           <tr>
