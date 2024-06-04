@@ -8,6 +8,7 @@ import router from "@/router/router.js";
 import JournalLine from "@/components/duty/journal/JournalLine.vue";
 import ScanerId from "@/components/duty/journal/ScanerId.vue";
 import { format } from 'date-fns';
+import { et } from 'date-fns/locale';
 
 const route = useRoute();
 const eventId = ref(route.params.eventId);
@@ -64,7 +65,8 @@ onMounted(() => {
       <ScanerId v-model="isScannerIdOpen" @update="" :eventId="eventId"/>
     </div>
     <div v-if="!isScannerIdOpen">
-      <h1 class="text-3xl text-center">Journal {{location}} {{format(event.date, 'PPPP', {locale: et})}}</h1>
+      <h1 class="text-3xl text-center">Journal {{location}} </h1>
+      <h2 class="text-2xl text-center">{{format(event.date, 'PPPP', {locale: et})}}</h2>
       <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm" v-if="registrations">
       <thead class="ltr:text-left rtl:text-right">
           <tr>
